@@ -1,0 +1,20 @@
+---
+ - name: install docker
+   hosts: 172.31.32.107
+   become: yes
+   tasks:
+    - name: yum install docker
+      yum:
+       name: docker
+       state: present
+    - name: ensure docker is running and enable the service when server is restarterd
+      service:
+        name: docker
+        state: started
+        enabled: yes
+   
+    -  user:
+         name: ansible 
+         shell: /bin/bash
+         groups: docker
+         append: yes
