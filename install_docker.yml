@@ -1,6 +1,6 @@
 ---
  - name: install docker
-   hosts: 172.31.32.107
+   hosts: nodes
    become: yes
    tasks:
     - name: yum install docker
